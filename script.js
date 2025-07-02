@@ -190,3 +190,73 @@ document.querySelectorAll("input, textarea, select").forEach((input) => {
     this.classList.remove("error")
   })
 })
+
+// Popup modal start //
+
+const orderApexButton = document.querySelector(".cta-button")
+const apexCardModal = document.querySelector(".modal")
+const modalCloseButton = document.querySelector(".modal-close")
+const modalBackdrop = document.querySelector(".modal-backdrop")
+
+// Open modal function
+function openModal() {
+  apexCardModal.classList.add("active")
+  modalBackdrop.classList.add("active")
+}
+
+// Close modal function
+function closeModal() {
+  apexCardModal.classList.remove("active")
+  modalBackdrop.classList.remove("active")
+}
+
+// Attach event listeners
+orderApexButton.addEventListener("click", openModal)
+modalCloseButton.addEventListener("click", closeModal)
+modalBackdrop.addEventListener("click", closeModal) // Close when clicking the backdrop
+
+// Optional: Close modal on "Escape" key
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && apexCardModal.classList.contains("active")) {
+    closeModal()
+  }
+})
+
+// Popup modal end //
+
+document
+  .getElementById("waitlistForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault()
+
+    const form = e.target
+    const formData = new FormData(form)
+    const submitBtn = form.querySelector("button")
+
+    submitBtn.disabled = true
+    submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...'
+
+    fetch("https://formsubmit.co/ajax/kasamkhan@hotmail.co.uk", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          form.style.display = "none"
+          document.getElementById("thankYouMessage").style.display = "block"
+        } else {
+          alert("Oops, something went wrong. Please try again.")
+        }
+      })
+      .catch(() => {
+        alert("Network error. Please try again.")
+      })
+      .finally(() => {
+        submitBtn.disabled = false
+        submitBtn.innerHTML =
+          '<i class="fa-solid fa-paper-plane"></i> Join Waitlist'
+      })
+  })

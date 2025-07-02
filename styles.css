@@ -258,13 +258,15 @@ body {
   line-height: 1.2;
 }
 
-.hero .underline {
+/*Underline removed /*
+
+/* .hero .underline {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   position: relative;
-}
+} */
 
 .hero p {
   font-size: var(--font-size-p);
@@ -580,7 +582,7 @@ body {
 }
 
 /* Modal Styles */
-.modal-overlay {
+.modal-backdrop {
   display: none;
   position: fixed;
   top: 0;
@@ -588,7 +590,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
+  z-index: 999;
   animation: fadeIn 0.3s ease;
 }
 
@@ -602,8 +604,9 @@ body {
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
+  display: none;
+  position: fixed;
+  top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
@@ -613,6 +616,11 @@ body {
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: var(--shadow-heavy);
+  z-index: 1000;
+}
+
+.active {
+  display: block;
 }
 
 .modal-header {
@@ -644,6 +652,10 @@ body {
   padding: 2rem;
 }
 
+.form-group-privacy {
+  margin-bottom: 1.5rem;
+}
+
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -662,7 +674,7 @@ body {
   border-color: var(--primary-color);
 }
 
-.submit-btn {
+/* .submit-btn {
   width: 100%;
   background: var(--gradient-primary);
   color: white;
@@ -673,7 +685,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-}
+} */
 
 .submit-btn:hover {
   transform: translateY(-2px);
@@ -1700,7 +1712,7 @@ a.apex-contact-value:hover {
 
   .apex-contact-item {
     flex-direction: column;
-    text-align: center;
+
     gap: 0.5rem;
   }
 }

@@ -16,7 +16,7 @@
     <nav class="navbar" id="navbar">
       <div class="logo">
         <div class="apex-text">APEX<span>DIGITAL</span></div>
-        <div class="tagline">Revolutionising Crypto Payments</div>
+        <div class="tagline">Reaching New Heights In Digital Solutions</div>
       </div>
       <div class="nav-links">
         <ul>
@@ -32,6 +32,7 @@
         <button class="cta-button" onclick="openModal()">
            Order Apex Card  <i class="fas fa-credit-card"></i>
         </button>
+   
       </div>
       <div class="mobile-nav">
         <button class="cta-button" onclick="openModal()">
@@ -55,12 +56,91 @@
     </div>
     </nav>
 
+
+      <!--Modal start-->
+
+<div class="modal-backdrop"></div>
+
+<div class="modal">
+  <div class="modal-header">
+    <span class="modal-close">&times;</span>
+    <h3>🚧 Feature Coming Soon</h3>
+  </div>
+  <div class="modal-body">
+    <p>We're working hard to bring this feature to life. Stay tuned for updates!</p>
+    <p>Want to be the first to know? Join our waitlist below.</p>
+
+    <div class="modal-form-container">
+  <form
+    id="waitlistForm"
+    method="POST"
+  >
+    <!-- Honeypot to catch bots -->
+    <input type="text" name="_honey" style="display:none" />
+
+    <!-- Disable captcha since honeypot is used -->
+    <input type="hidden" name="_captcha" value="false" />
+
+    <!-- Autoresponder message -->
+    <input type="hidden" name="_autoresponse" value="Thanks for joining the waitlist! We'll notify you when the feature launches." />
+
+    <!-- Subject of your email -->
+    <input type="hidden" name="_subject" value="New Waitlist Signup" />
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Your Name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+      />
+    </div>
+
+    <div class="form-group-privacy">
+      <label>
+        <input type="checkbox" name="privacy" required />
+        I agree to the <a href="/privacy" target="_blank">privacy policy</a>
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn">
+      <i class="fa-solid fa-paper-plane"></i> Join Waitlist
+    </button>
+  </form>
+
+  <!-- Thank-you message (hidden initially) -->
+  <div id="thankYouMessage" style="display:none; margin-top:1rem;">
+    <p>✅ Thanks for joining the waitlist! We'll keep you updated.</p>
+  </div>
+</div>
+
+
+
+  
+</div>
+</div>
+
+<!--Modal end -->
+
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content">
         <h1>
-          A New Era For Crypto Payments Has Arrived.
-          <span class="underline">Permissionless</span> USDC Transactions
+          The New Era Of Crypto Payments Has Arrived.
+          
         </h1>
         <p>
           Spend USDC directly from your Phantom wallet with complete control and
@@ -94,7 +174,7 @@
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fa-solid fa-gem"></i>
+              <i class="fa-solid fa-shield"></i>
             </div>
             <h4>Non-Custodial Control</h4>
             <p>
@@ -138,16 +218,13 @@
               <div class="panel">
                 <ul class="feature-list">
                   <li>
-                    Total Ownership: You control your USDC, secured by your
-                    wallet's encryption
+                    Global reach: Shop worldwide – from local cafes to international retailers. 
                   </li>
                   <li>
-                    Max Privacy: Your funds, your business — zero custody means
-                    zero interference
+                    Zero hassle – one-time wallet set up, then tap and go simplicity.
                   </li>
                   <li>
-                    Iron Clad Security: None of our servers store your crypto,
-                    reducing hack risks
+                    Apex digital turns your USDC into instant, borderless spending power, as effortless as cash but with crypto’s edge. 
                   </li>
                 </ul>
               </div>
@@ -168,16 +245,13 @@
               <div class="panel">
                 <ul class="feature-list">
                   <li>
-                    Total Ownership: You control your USDC, secured by your
-                    wallet's encryption
+                   True anonymity: Spend globally with minimal footprints, just like cash.
                   </li>
                   <li>
-                    Max Privacy: Your funds, your business — zero custody means
-                    zero interference
+                    Data security: None of our servers hold your information, shielding you from any data breaches.
                   </li>
                   <li>
-                    Iron Clad Security: None of our servers store your crypto,
-                    reducing hack risks
+                    Total freedom: your wallet, your rules – no third party oversight. Apex Digital encourages you to shop, dine, or spend lavishly with ultimate privacy. 
                   </li>
                 </ul>
               </div>
@@ -199,16 +273,14 @@
               <div class="panel">
                 <ul class="feature-list">
                   <li>
-                    Total Ownership: You control your USDC, secured by your
-                    wallet's encryption
+                    Easy Reporting: Control your wallet, own your tax records.
                   </li>
                   <li>
-                    Max Privacy: Your funds, your business — zero custody means
-                    zero interference
+                     Untraceable Privacy: ‘Wash’ USDC for anonymity, leaving no traces for tax corporations. 
                   </li>
                   <li>
-                    Iron Clad Security: None of our servers store your crypto,
-                    reducing hack risks
+                    Responsible Freedom: You manage taxes, we deliver tech. Apex Digital blends crypto stealth with tax clarity - your wallet, your rules.
+
                   </li>
                 </ul>
               </div>
@@ -236,10 +308,9 @@
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
-            <h4>Load Your USDC</h4>
+            <h4>Activate Your Card</h4>
             <p>
-              Keep your USDC in your wallet - we never hold or control your
-              crypto assets
+              Set up your virtual Apex Card with a few clicks
             </p>
           </div>
           <div class="step-card">
@@ -557,7 +628,7 @@
                 <div class="apex-footer-brand">
                     <div class="apex-footer-logo">
                         <div class="apex-footer-logo-text">APEX<span>DIGITAL</span></div>
-                        <div class="apex-footer-tagline">Revolutionising Crypto Payments</div>
+                        <div class="apex-footer-tagline">Reaching New Heights In Digital Solutions</div>
                     </div>
                     <p class="apex-footer-description">
                         Experience the future of crypto payments with complete control and privacy. 
@@ -565,17 +636,14 @@
                     </p>
                     <div class="apex-footer-social">
                         <a href="#" class="apex-social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
+                            <i class="fa-brands fa-x-twitter"></i>
                         </a>
-                        <a href="#" class="apex-social-link" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
+                        
+                        
                         <a href="#" class="apex-social-link" aria-label="Telegram">
                             <i class="fab fa-telegram"></i>
                         </a>
-                        <a href="#" class="apex-social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
+                        
                     </div>
                 </div>
 
@@ -638,11 +706,9 @@
                 <div class="apex-footer-bottom-content">
                     <div class="apex-footer-copyright">
                         <p>&copy; 2025 Apex Digital. All rights reserved.</p>
-                        <p class="apex-footer-disclaimer">
-                            Cryptocurrency investments carry risk. Past performance does not guarantee future results.
-                        </p>
+                        
                     </div>
-                    <div class="apex-footer-cta">
+                    <div class="apex-footer-cta" onclick="openModal()">
                         <button class="apex-footer-cta-btn">
                             <i class="fas fa-credit-card"></i>
                             Get Your Apex Card
