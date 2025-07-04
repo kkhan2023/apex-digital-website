@@ -7,7 +7,7 @@ const mobileLinks = document.querySelector(".mobile-links")
 mobileLinks.style.display = "none"
 
 // Toggle mobile menu when hamburger button is clicked
-mobileMenuBtn.addEventListener("click", function () {
+mobileMenuBtn.addEventListener("click", function (e) {
   if (
     mobileLinks.style.display === "none" ||
     mobileLinks.style.display === ""
@@ -90,107 +90,6 @@ function toggleFAQ(element) {
   }
 }
 
-// contact form logic
-
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault()
-
-  // Get form data
-  const formData = new FormData(this)
-  const formObject = {}
-  formData.forEach((value, key) => {
-    formObject[key] = value
-  })
-
-  // Validate required fields
-  const requiredFields = [
-    "firstName",
-    "lastName",
-    "email",
-    "message",
-    "privacy",
-  ]
-  let isValid = true
-
-  requiredFields.forEach((field) => {
-    const input = document.getElementById(field)
-    if (!input.value || (field === "privacy" && !input.checked)) {
-      input.classList.add("error")
-      isValid = false
-    } else {
-      input.classList.remove("error")
-    }
-  })
-
-  if (!isValid) {
-    // Show error message
-    showNotification("Please fill in all required fields", "error")
-    return
-  }
-
-  // Simulate form submission
-  const submitBtn = document.querySelector(".submit-btn")
-  submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...'
-  submitBtn.disabled = true
-
-  // Simulate API call delay
-  setTimeout(() => {
-    // Hide form and show success message
-    document.querySelector(".contact-form").style.display = "none"
-    document.querySelector(".success-message").style.display = "block"
-
-    // Reset button after showing success
-    setTimeout(() => {
-      submitBtn.innerHTML =
-        '<i class="fa-solid fa-paper-plane"></i> Send Message'
-      submitBtn.disabled = false
-
-      // Reset form and show it again after 5 seconds
-      setTimeout(() => {
-        this.reset()
-        document.querySelector(".contact-form").style.display = "block"
-        document.querySelector(".success-message").style.display = "none"
-      }, 5000)
-    }, 100)
-  }, 2000)
-})
-
-// Notification function
-function showNotification(message, type) {
-  const notification = document.createElement("div")
-  notification.className = `notification ${type}`
-  notification.innerHTML = `
-    <i class="fa-solid fa-${
-      type === "error" ? "exclamation-triangle" : "check-circle"
-    }"></i>
-    ${message}
-  `
-
-  document.body.appendChild(notification)
-
-  setTimeout(() => {
-    notification.classList.add("show")
-  }, 100)
-
-  setTimeout(() => {
-    notification.classList.remove("show")
-    setTimeout(() => {
-      document.body.removeChild(notification)
-    }, 300)
-  }, 3000)
-}
-
-// Remove error class on input
-document.querySelectorAll("input, textarea, select").forEach((input) => {
-  input.addEventListener("input", function () {
-    this.classList.remove("error")
-  })
-
-  input.addEventListener("change", function () {
-    this.classList.remove("error")
-  })
-})
-
 // Popup modal start //
 
 const orderApexButton = document.querySelector(".cta-button")
@@ -224,39 +123,104 @@ window.addEventListener("keydown", (event) => {
 
 // Popup modal end //
 
+// Modal waitlist form logic //
+
+const form = document.getElementById("waitlistForm")
+const thankYouMessage = document.getElementById("thankYouMessage")
+const submitBtn = form.querySelector("button")
+const modalWaitlistText = document.querySelectorAll(".modal-text")
+
+form.addEventListener("submit", function () {
+  submitBtn.disabled = true
+  submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...'
+
+  setTimeout(() => {
+    modalWaitlistText.forEach((e) => (e.style.display = "none"))
+    form.style.display = "none"
+    thankYouMessage.style.display = "block"
+  }, 1000)
+})
+
+// Modal waitlist form logic end //
+
+// main contact form logic start //
+
 document
-  .getElementById("waitlistForm")
-  .addEventListener("submit", function (e) {
+  .getElementById("contactForm")
+  .addEventListener("submit", async function (e) {
     e.preventDefault()
 
     const form = e.target
+    const successMessage = document.getElementById("successMessage")
+
+    //  Run built-in validation
+    if (!form.checkValidity()) {
+      form.reportValidity()
+      return
+    }
+
     const formData = new FormData(form)
-    const submitBtn = form.querySelector("button")
 
-    submitBtn.disabled = true
-    submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...'
+    // Check reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse()
+    if (!recaptchaResponse) {
+      alert("Please complete the reCAPTCHA.")
+      return
+    }
 
-    fetch("https://formsubmit.co/ajax/kasamkhan@hotmail.co.uk", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Accept: "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          form.style.display = "none"
-          document.getElementById("thankYouMessage").style.display = "block"
-        } else {
-          alert("Oops, something went wrong. Please try again.")
-        }
+    formData.append("g-recaptcha-response", recaptchaResponse)
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
       })
-      .catch(() => {
-        alert("Network error. Please try again.")
-      })
-      .finally(() => {
-        submitBtn.disabled = false
-        submitBtn.innerHTML =
-          '<i class="fa-solid fa-paper-plane"></i> Join Waitlist'
-      })
+
+      if (response.ok) {
+        form.style.display = "none"
+        successMessage.style.display = "block"
+        form.reset()
+        grecaptcha.reset()
+      } else {
+        alert("Submission failed. Please try again.")
+      }
+    } catch (error) {
+      console.error("Form error:", error)
+      alert("An error occurred. Please try again.")
+    }
   })
+
+// back to top button //
+
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTopBtn = document.querySelector(".back-to-top-btn")
+  const hero = document.getElementById("home")
+
+  if (!backToTopBtn || !hero) return
+
+  // Hide initially
+  backToTopBtn.style.opacity = 0
+  backToTopBtn.style.pointerEvents = "none"
+  backToTopBtn.style.transition = "opacity 0.4s ease"
+
+  function toggleBackToTop() {
+    const heroBottom = hero.getBoundingClientRect().bottom
+
+    if (heroBottom < 0) {
+      // User scrolled past hero, show button
+      backToTopBtn.style.opacity = 1
+      backToTopBtn.style.pointerEvents = "auto"
+    } else {
+      // Hide button
+      backToTopBtn.style.opacity = 0
+      backToTopBtn.style.pointerEvents = "none"
+    }
+  }
+
+  window.addEventListener("scroll", toggleBackToTop)
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  })
+})

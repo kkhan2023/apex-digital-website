@@ -1,22 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <script defer src="script.js"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <title>Apex Digital - Revolutionising Crypto Payments</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+
+  <title>Apex Digital | Spend USDC Privately With the Apex Card</title>
+  <meta name="description" content="Apex Digital offers a non-custodial, privacy-first crypto payment solution. Use your USDC directly from your Phantom wallet — no KYC, no custody, just freedom." />
+  <meta name="keywords" content="Apex Digital, crypto card, USDC payments, Phantom wallet, non-custodial crypto, privacy payments, web3 card, blockchain payments, no KYC crypto" />
+  <meta name="author" content="Apex Digital" />
+  <link rel="canonical" href="https://www.apexdigitalcard.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.apexdigitalcard.com/" />
+  <meta property="og:title" content="Apex Digital | Spend USDC Privately With the Apex Card" />
+  <meta property="og:description" content="Experience private, permissionless spending with the Apex Digital Card. No custody. No KYC. Just crypto the way it was meant to be." />
+  <meta property="og:image" content="https://www.apexdigitalcard.com/assets/apex-digital-card-usdc-phantom-wallet.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.apexdigitalcard.com/" />
+  <meta name="twitter:site" content="@apexdigitalcard" />
+  <meta name="twitter:title" content="Apex Digital | Spend USDC Privately With the Apex Card" />
+  <meta name="twitter:description" content="Use your Phantom wallet to spend USDC worldwide. Apex Digital lets you pay instantly and privately — no middlemen." />
+  <meta name="twitter:image" content="https://www.apexdigitalcard.com/assets/apex-digital-card-usdc-phantom-wallet.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/apex-digital-favicon.png" type="image/x-icon" />
+
+  <!-- Performance: Optional Preconnect for Fonts (if needed) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Styles & Scripts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
   <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="logo">
         <div class="apex-text">APEX<span>DIGITAL</span></div>
-        <div class="tagline">Reaching New Heights In Digital Solutions</div>
+        <div class="tagline">Reaching New Heights In <br>Digital Solutions</div>
       </div>
       <div class="nav-links">
         <ul>
@@ -36,7 +62,7 @@
       </div>
       <div class="mobile-nav">
         <button class="cta-button" onclick="openModal()">
-          Order Apex Card
+          Order Card
         </button>
         <div class="mobile-menu">
         <button class="hamburger">
@@ -67,46 +93,33 @@
     <h3>🚧 Feature Coming Soon</h3>
   </div>
   <div class="modal-body">
-    <p>We're working hard to bring this feature to life. Stay tuned for updates!</p>
-    <p>Want to be the first to know? Join our waitlist below.</p>
+    <p class="modal-text">We're working hard to bring this feature to life. Stay tuned for updates!</p>
+    <p class="modal-text">Want to be the first to know? Join our waitlist below.</p>
 
-    <div class="modal-form-container">
+  <div class="modal-form-container">
   <form
     id="waitlistForm"
+    action="https://formspree.io/f/xwpbzrpn" 
     method="POST"
+    target="hidden_iframe"
   >
-    <!-- Honeypot to catch bots -->
-    <input type="text" name="_honey" style="display:none" />
+    <!-- Honeypot -->
+    <input type="text" name="_gotcha" style="display:none" />
 
-    <!-- Disable captcha since honeypot is used -->
-    <input type="hidden" name="_captcha" value="false" />
-
-    <!-- Autoresponder message -->
+    <!-- Autoresponse -->
     <input type="hidden" name="_autoresponse" value="Thanks for joining the waitlist! We'll notify you when the feature launches." />
 
-    <!-- Subject of your email -->
+    <!-- Email Subject -->
     <input type="hidden" name="_subject" value="New Waitlist Signup" />
 
     <div class="form-group">
       <label for="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="Your Name"
-        required
-      />
+      <input type="text" id="name" name="name" required placeholder="Your Name" />
     </div>
 
     <div class="form-group">
       <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="you@example.com"
-        required
-      />
+      <input type="email" id="email" name="email" required placeholder="you@example.com" />
     </div>
 
     <div class="form-group-privacy">
@@ -117,15 +130,19 @@
     </div>
 
     <button type="submit" class="submit-btn">
-      <i class="fa-solid fa-paper-plane"></i> Join Waitlist
+      <i class="fa fa-paper-plane"></i> Join Waitlist
     </button>
   </form>
 
-  <!-- Thank-you message (hidden initially) -->
+  <!-- Hidden iframe -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <!-- Thank-you message -->
   <div id="thankYouMessage" style="display:none; margin-top:1rem;">
     <p>✅ Thanks for joining the waitlist! We'll keep you updated.</p>
   </div>
 </div>
+
 
 
 
@@ -159,6 +176,15 @@
         </div>
       </div>
     </section>
+
+    
+<!-- back to top-->
+
+   <div class="back-to-top-container">
+  <button class="back-to-top-btn">
+    <i class="fa-solid fa-angle-up"></i>
+  </button>
+</div>
 
     <!-- Features Section -->
     <section class="section" id="features">
@@ -537,73 +563,71 @@
           </div>
 
           <div class="contact-form-container">
-            <form class="contact-form" id="contactForm">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName">First Name *</label>
-                  <input type="text" id="firstName" name="firstName" placeholder=" John" required />
-                </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name *</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Doe" required/>
-                </div>
-              </div>
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mzzgwjdb" method="POST">
+  <!-- Honeypot -->
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="johndoe@email.com"  required />
-              </div>
+  <!-- Auto response -->
+  <input type="hidden" name="_autoresponse" value="Thanks for contacting us! We'll get back to you shortly." />
+  <input type="hidden" name="_subject" value="New Contact Form Submission" />
 
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <select id="subject" name="subject">
-                  <option value="">Select a topic...</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="technical">Technical Support</option>
-                  <option value="billing">Billing Question</option>
-                  <option value="partnership">Partnership</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="firstName">First Name *</label>
+      <input type="text" id="firstName" name="firstName" placeholder="John" required />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name *</label>
+      <input type="text" id="lastName" name="lastName" placeholder="Doe" required/>
+    </div>
+  </div>
 
-              <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Tell us how we can help..."
-                  required
-                ></textarea>
-              </div>
+  <div class="form-group">
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="_replyto" placeholder="johndoe@email.com" required />
+  </div>
 
-              <div class="form-group checkbox-group">
-                <label class="checkbox-label">
-                  <input type="checkbox" id="privacy" name="privacy" required />
-                  <span class="checkmark"></span>
-                  I agree to the
-                  <a href="#" class="privacy-link">Privacy Policy</a> and
-                  consent to being contacted
-                </label>
-              </div>
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <select id="subject" name="subject">
+      <option value="">Select a topic...</option>
+      <option value="general">General Inquiry</option>
+      <option value="technical">Technical Support</option>
+      <option value="billing">Billing Question</option>
+      <option value="partnership">Partnership</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
 
-              <button type="submit" class="submit-btn">
-                <i class="fa-solid fa-paper-plane"></i>
-                Send Message
-              </button>
-            </form>
+  <div class="form-group">
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+  </div>
 
-            <!-- Success Message -->
-            <div class="success-message" id="successMessage">
-              <div class="success-icon">
-                <i class="fa-solid fa-check-circle"></i>
-              </div>
-              <h3>Message Sent Successfully!</h3>
-              <p>
-                Thank you for contacting us. We'll get back to you within 24
-                hours.
-              </p>
-            </div>
+  <div class="form-group-privacy checkbox-group">
+    <label class="checkbox-label">
+      <input type="checkbox" id="privacy" name="privacy" required />
+      <span class="checkmark"></span>
+      I agree to the <a href="#" class="privacy-link">Privacy Policy</a> and consent to being contacted
+    </label>
+  </div>
+
+  <!-- Google reCAPTCHA widget -->
+  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+
+  <button type="submit" class="submit-btn">
+    <i class="fa-solid fa-paper-plane"></i> Send Message
+  </button>
+</form>
+
+<!-- Success Message -->
+<div class="success-message" id="successMessage" style="display: none;">
+  <div class="success-icon">
+    <i class="fa-solid fa-check-circle"></i>
+  </div>
+  <h3>Message Sent Successfully!</h3>
+  <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+</div>
           </div>
         </div>
       </div>
@@ -635,12 +659,12 @@
                         Spend USDC directly from your wallet with the revolutionary Apex Card.
                     </p>
                     <div class="apex-footer-social">
-                        <a href="#" class="apex-social-link" aria-label="Twitter">
+                        <a href="https://x.com/apexdigitalcard?s=11" class="apex-social-link" aria-label="Twitter">
                             <i class="fa-brands fa-x-twitter"></i>
                         </a>
                         
                         
-                        <a href="#" class="apex-social-link" aria-label="Telegram">
+                        <a href="https://t.me/+2pKRyWxp3hcyMDM0" class="apex-social-link" aria-label="Telegram">
                             <i class="fab fa-telegram"></i>
                         </a>
                         

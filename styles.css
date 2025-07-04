@@ -6,7 +6,7 @@
   --font-size-h3: clamp(1.5rem, 3vw, 2rem);
   --font-size-h4: clamp(1.25rem, 2.5vw, 1.5rem);
   --font-size-p: clamp(1rem, 1.6vw, 1.25rem);
-  --font-size-logo-main: clamp(1.5rem, 2.8vw, 2rem);
+  --font-size-logo-main: clamp(1.5rem, 2.5vw, 2rem);
   --font-size-tagline-main: clamp(0.7rem, 1.2vw, 0.9rem);
   --font-size-button: clamp(0.9rem, 1.5vw, 1rem);
 
@@ -155,7 +155,7 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 1075px) {
   .nav-links,
   .nav-buttons {
     display: none;
@@ -673,19 +673,6 @@ body {
   outline: none;
   border-color: var(--primary-color);
 }
-
-/* .submit-btn {
-  width: 100%;
-  background: var(--gradient-primary);
-  color: white;
-  border: none;
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-} */
 
 .submit-btn:hover {
   transform: translateY(-2px);
@@ -1715,4 +1702,29 @@ a.apex-contact-value:hover {
 
     gap: 0.5rem;
   }
+}
+
+.back-to-top-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+}
+
+.back-to-top-btn {
+  background-color: #1f2937; /* dark gray (like Tailwind's gray-800) */
+  color: white;
+  border: none;
+  border-radius: 9999px; /* fully rounded */
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: #111827; /* darker on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
